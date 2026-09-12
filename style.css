@@ -1,0 +1,167 @@
+@font-face {
+  /* "Px437 IBM VGA 8x16" — Ultimate Oldschool PC Font Pack (int10h.org),
+   * (c) VileR, CC BY-SA 4.0. See fonts/LICENSE-CC-BY-SA-4.0.txt. */
+  font-family: "IBM VGA";
+  src: url("./fonts/WebPlus_IBM_VGA_8x16.woff") format("woff");
+  font-display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+body {
+  font-family: "IBM VGA", monospace;
+  font-size: 16px;
+  line-height: 16px;
+  color: #d8d8d8;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+#screen {
+  height: 100dvh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 24px;
+  cursor: text;
+  scrollbar-width: thin;
+  scrollbar-color: #333 #000;
+}
+
+#screen::-webkit-scrollbar {
+  width: 8px;
+}
+#screen::-webkit-scrollbar-track {
+  background: #000;
+}
+#screen::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+#output {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.line {
+  min-height: 16px;
+  white-space: pre-wrap;
+}
+
+.dim {
+  color: #888;
+}
+
+.user {
+  color: #fff;
+  font-weight: normal;
+}
+
+.label {
+  color: #f0f0f0;
+}
+
+.dir {
+  color: #fff;
+}
+
+.file {
+  color: #999;
+}
+
+.prompt-echo .path {
+  color: #ccc;
+}
+
+/* ---------------- input line ---------------- */
+#inputline {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+#inputline .user {
+  color: #fff;
+}
+
+#inputline .dim {
+  color: #888;
+  margin: 0 2px;
+}
+
+#cmdline {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #d8d8d8;
+  font-family: "IBM VGA", monospace;
+  font-size: 16px;
+  line-height: 16px;
+  caret-color: #d8d8d8;
+  padding: 0;
+  margin: 0;
+  min-width: 10px;
+}
+
+/* ---------------- neofetch ---------------- */
+.neofetch {
+  display: table;
+  margin: 8px 0;
+}
+
+.nf-row {
+  display: table-row;
+}
+
+.nf-logo,
+.nf-info {
+  display: table-cell;
+  vertical-align: top;
+  white-space: pre;
+}
+
+.nf-logo {
+  padding-right: 24px;
+}
+
+/* ---------------- responsive ---------------- */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  #screen {
+    padding: 12px;
+  }
+  .neofetch,
+  .nf-row {
+    display: block;
+  }
+  .nf-logo,
+  .nf-info {
+    display: block;
+    padding-right: 0;
+  }
+  .nf-info {
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 420px) {
+  body {
+    font-size: 10px;
+    line-height: 10px;
+  }
+}
