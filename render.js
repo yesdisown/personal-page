@@ -62,11 +62,13 @@
       .map((c) => `<span style="color:${c}">\u2588\u2588</span>`)
       .join("");
 
+    const headingHtml = escapeHtml(heading).replace(/@yesdisown/g, '<span class="purple">@yesdisown</span>');
+
     document.getElementById("neofetch").innerHTML = `
       <div class="nf-logo">${buildLogoHtml()}</div>
       <div class="nf-info">
-        <div class="nf-userhost">${escapeHtml(heading)}</div>
-        <div><span class="label"> ${escapeHtml(nf.bio)}</span></div>
+        <div class="nf-userhost">${headingHtml}</div>
+        <div> ${escapeHtml(nf.bio)}</div>
         <div class="dim">${"-".repeat(heading.length)}</div>
         <div><span class="label">OS:</span> ${escapeHtml(nf.os)}</div>
         <div><span class="label">Watching:</span> ${escapeHtml(nf.watching)}</div>

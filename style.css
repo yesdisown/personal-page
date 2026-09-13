@@ -26,6 +26,7 @@ body {
   margin: 0;
   min-height: 100%;
   background: var(--bg);
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(156, 104, 224, 0.08) 0%, transparent 60%);
 }
 
 body {
@@ -38,6 +39,7 @@ body {
 
 a {
   color: var(--link);
+  transition: color 0.15s ease, background 0.15s ease;
 }
 a:hover,
 a:focus-visible {
@@ -64,6 +66,10 @@ a:focus-visible {
 .dim,
 .dim-row {
   color: var(--dim);
+}
+
+.purple {
+  color: var(--link);
 }
 
 /* ---------------- neofetch ---------------- */
@@ -114,13 +120,23 @@ a:focus-visible {
 .link-list li a,
 .project-list li a {
   color: var(--text);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.link-list li .dim-row {
+  transition: background 0.15s ease;
 }
 
 .link-list li a:hover,
 .link-list li a:focus-visible,
 .project-list li a:hover,
 .project-list li a:focus-visible {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(156, 104, 224, 0.12);
+  transform: translateX(4px);
+}
+
+.link-list li .dim-row:hover {
+  background: rgba(156, 104, 224, 0.12);
 }
 
 .proj-name {
