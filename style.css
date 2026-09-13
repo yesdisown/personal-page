@@ -7,8 +7,7 @@
 }
 
 :root {
-  /* overridden at runtime from config.js's SITE.theme, these are just
-   * sane fallbacks in case JS is slow/blocked */
+  /* site color theme — edit these directly to restyle the page */
   --bg: #000000;
   --text: #d8d8d8;
   --dim: #888888;
@@ -80,10 +79,13 @@ a:focus-visible {
 }
 
 .nf-logo {
-  white-space: pre;
-  line-height: 1;
-  font-size: min(16px, 3.6vw);
   flex-shrink: 0;
+}
+
+.nf-logo svg {
+  display: block;
+  width: min(220px, 45vw);
+  height: auto;
 }
 
 .nf-info {
