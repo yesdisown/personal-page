@@ -96,7 +96,7 @@
   // ---- projects ------------------------------------------------------
   function projectItemHtml(p) {
     const descHtml = p.desc ? `<span class="proj-desc"> — ${escapeHtml(p.desc)}</span>` : "";
-    return `<li><a href="${escapeHtml(p.repo)}" target="_blank" rel="noopener"><span class="proj-name">${escapeHtml(
+    return `<li><a href="${escapeHtml(p.repo)}" target="_blank" rel="noopener"><span class="label">${escapeHtml(
       p.name
     )}</span>${descHtml}</a></li>`;
   }

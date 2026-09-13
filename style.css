@@ -56,7 +56,7 @@ a:focus-visible {
   color: var(--dim);
   font-weight: normal;
   font-size: 1em;
-  margin: 32px 0 8px;
+  margin: 0 0 8px;
 }
 
 .label {
@@ -97,6 +97,19 @@ a:focus-visible {
 .swatch {
   margin-top: 8px;
   line-height: 1;
+}
+
+/* ---------------- home content (links + projects side by side) ---------------- */
+#home-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 16px;
+}
+
+.home-section {
+  flex: 1;
+  min-width: 280px;
 }
 
 /* ---------------- lists (links / projects) ---------------- */
