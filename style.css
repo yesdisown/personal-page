@@ -6,6 +6,17 @@
   font-display: block;
 }
 
+:root {
+  /* overridden at runtime from config.js's SITE.theme, these are just
+   * sane fallbacks in case JS is slow/blocked */
+  --bg: #000000;
+  --text: #d8d8d8;
+  --dim: #888888;
+  --heading: #ffffff;
+  --link: #9c68e0;
+  --link-hover: #ffffff;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -13,155 +24,171 @@
 html,
 body {
   margin: 0;
-  padding: 0;
-  height: 100%;
-  background: #000;
-  overflow: hidden;
+  min-height: 100%;
+  background: var(--bg);
 }
 
 body {
   font-family: "IBM VGA", monospace;
   font-size: 16px;
-  line-height: 16px;
-  color: #d8d8d8;
+  line-height: 1.5;
+  color: var(--text);
   -webkit-font-smoothing: none;
-  font-smooth: never;
+}
+
+a {
+  color: var(--link);
+}
+a:hover,
+a:focus-visible {
+  color: var(--link-hover);
 }
 
 #screen {
-  height: 100dvh;
-  width: 100%;
-  overflow-y: auto;
-  overflow-x: auto;
-  padding: 24px;
-  cursor: text;
-  scrollbar-width: thin;
-  scrollbar-color: #333 #000;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
 }
 
-#screen::-webkit-scrollbar {
-  width: 8px;
-}
-#screen::-webkit-scrollbar-track {
-  background: #000;
-}
-#screen::-webkit-scrollbar-thumb {
-  background: #333;
-}
-
-#output {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.line {
-  min-height: 16px;
-  white-space: pre-wrap;
-}
-
-.dim {
-  color: #888;
-}
-
-.user {
-  color: #fff;
+.section-heading {
+  color: var(--dim);
   font-weight: normal;
+  font-size: 1em;
+  margin: 32px 0 8px;
 }
 
 .label {
-  color: #f0f0f0;
+  color: var(--heading);
 }
 
-.dir {
-  color: #fff;
-}
-
-.file {
-  color: #999;
-}
-
-.prompt-echo .path {
-  color: #ccc;
-}
-
-/* ---------------- input line ---------------- */
-#inputline {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-#inputline .user {
-  color: #fff;
-}
-
-#inputline .dim {
-  color: #888;
-  margin: 0 2px;
-}
-
-#cmdline {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #d8d8d8;
-  font-family: "IBM VGA", monospace;
-  font-size: 16px;
-  line-height: 16px;
-  caret-color: #d8d8d8;
-  padding: 0;
-  margin: 0;
-  min-width: 10px;
+.dim,
+.dim-row {
+  color: var(--dim);
 }
 
 /* ---------------- neofetch ---------------- */
-.neofetch {
-  display: table;
-  margin: 8px 0;
-}
-
-.nf-row {
-  display: table-row;
-}
-
-.nf-logo,
-.nf-info {
-  display: table-cell;
-  vertical-align: top;
-  white-space: pre;
+#neofetch {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
 }
 
 .nf-logo {
-  padding-right: 24px;
+  white-space: pre;
+  line-height: 1;
+  font-size: min(16px, 3.6vw);
+  flex-shrink: 0;
 }
 
-/* ---------------- responsive ---------------- */
-@media (max-width: 640px) {
-  body {
-    font-size: 14px;
-    line-height: 14px;
-  }
+.nf-info {
+  white-space: normal;
+}
+
+.nf-userhost {
+  color: var(--heading);
+}
+
+.swatch {
+  margin-top: 8px;
+  line-height: 1;
+}
+
+/* ---------------- lists (links / projects) ---------------- */
+.link-list,
+.project-list {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+}
+
+.link-list li a,
+.link-list li .dim-row,
+.project-list li a {
+  display: block;
+  padding: 8px 6px;
+  margin: 0 -6px;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.link-list li a,
+.project-list li a {
+  color: var(--text);
+}
+
+.link-list li a:hover,
+.link-list li a:focus-visible,
+.project-list li a:hover,
+.project-list li a:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.proj-name {
+  color: var(--link);
+}
+
+.proj-desc {
+  color: var(--dim);
+}
+
+.see-all,
+.back-link {
+  display: inline-block;
+  padding: 6px 0;
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+
+.back-link {
+  margin-bottom: 8px;
+}
+
+/* ---------------- view toggle (pure CSS, no JS) ---------------- */
+#all-projects {
+  display: none;
+}
+#all-projects:target {
+  display: block;
+}
+#all-projects:target ~ #home {
+  display: none;
+}
+
+/* ---------------- footer ---------------- */
+footer {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid #222;
+}
+
+.credit {
+  color: var(--dim);
+  font-size: 0.75em;
+  text-decoration: none;
+}
+.credit:hover {
+  color: var(--link-hover);
+}
+
+/* ---------------- mobile: layout change, not just scaling ---------------- */
+@media (max-width: 860px) {
   #screen {
-    padding: 12px;
+    padding: 20px 16px 40px;
   }
-  .neofetch,
-  .nf-row {
-    display: block;
-  }
-  .nf-logo,
-  .nf-info {
-    display: block;
-    padding-right: 0;
-  }
-  .nf-info {
-    margin-top: 6px;
-  }
-}
 
-@media (max-width: 420px) {
-  body {
-    font-size: 10px;
-    line-height: 10px;
+  #neofetch {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .nf-logo {
+    margin: 0 auto;
+  }
+
+  .nf-info {
+    text-align: left;
+    width: 100%;
   }
 }

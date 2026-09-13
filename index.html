@@ -3,36 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>yes & disown</title>
-  <meta name="description" content="Hi, i'm @yesdisown - Rustacean, open-source enthusiast and progressive rock lover." />
-  <meta name="theme-color" content="#5865F2">
-  <link rel="icon" href="./favicon.png" />
+  <title>yesdisown@disown: ~</title>
+  <meta name="description" content="disown.dev — yesdisown" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%224%22 fill=%22%230d0710%22/><text x=%2216%22 y=%2224%22 font-family=%22monospace%22 font-size=%2222%22 font-weight=%22bold%22 fill=%22%239c68e0%22 text-anchor=%22middle%22>&amp;</text></svg>" />
 
   <link rel="stylesheet" href="./style.css" />
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://disown.dev/">
-  <meta property="og:title" content="Yes & disown">
-  <meta property="og:description" content="Hi, I'm @yesdisown - Rustacean, open-source enthusiast, and progressive rock lover.">
-  <meta property="og:image" content="./favicon.png">
 </head>
 <body>
-  <div id="screen">
-    <div id="output"></div>
-    <div id="inputline">
-      <span class="user" id="prompt-userhost"></span><span class="dim">:</span><span class="path" id="prompt-path"></span><span class="dim">$</span>&nbsp;<input
-        id="cmdline"
-        type="text"
-        autocomplete="off"
-        autocapitalize="off"
-        autocorrect="off"
-        spellcheck="false"
-        aria-label="terminal input"
-      />
-    </div>
-  </div>
+  <main id="screen">
+
+    <!-- "all projects" view. Hidden unless the URL is #all-projects.
+         Toggling is pure CSS (:target) — no JS navigation involved. -->
+    <section id="all-projects">
+      <a href="#" class="back-link">&larr; back</a>
+      <h2 class="section-heading" id="all-projects-heading">$ all projects</h2>
+      <ul id="projects-full" class="project-list"></ul>
+    </section>
+
+    <!-- home view. Shown by default. -->
+    <section id="home">
+      <div id="neofetch"></div>
+
+      <h2 class="section-heading">$ links</h2>
+      <ul id="social-links" class="link-list"></ul>
+
+      <h2 class="section-heading">$ projects</h2>
+      <ul id="projects-preview" class="project-list"></ul>
+      <div id="see-all-wrap"></div>
+    </section>
+
+    <footer>
+      <a class="credit" href="./fonts/LICENSE-CC-BY-SA-4.0.txt">font: IBM VGA 8x16 (CC BY-SA 4.0)</a>
+    </footer>
+
+  </main>
 
   <script src="./config.js"></script>
-  <script src="./terminal.js"></script>
+  <script src="./render.js"></script>
 </body>
 </html>

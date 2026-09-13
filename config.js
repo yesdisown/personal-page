@@ -1,71 +1,71 @@
 /* ============================================================================
- *  config.js — EDIT THIS FILE, not terminal.js.
+ *  config.js — EDIT THIS FILE for everything day-to-day.
  *
- *  Everything you'll want to change day-to-day lives here:
- *    - your socials / neofetch info
- *    - your projects list (adding one line = a new `cat`-able file)
- *    - the ascii logo (pre-baked from your pfp, see notes below)
- *    - fortune quotes
- *
- *  terminal.js reads this object and builds the fake filesystem + neofetch
- *  output from it, so you don't have to touch the engine for normal edits.
+ *  This is a link page, not a shell — everything here becomes either a
+ *  <a href> link or a piece of text on the page. render.js reads this
+ *  object and builds the DOM from it; you shouldn't need to touch render.js
+ *  for normal edits.
  * ==========================================================================*/
 
 const SITE = {
-  // shown in the prompt: <user>@<host>:~$
-  user: "yes",
-  host: "disown.dev",
+  heading: "Hi, im @yesdisown!",
 
-  // ---- neofetch info block (right-hand side) --------------------------
+
+  // ---- colors ---------------------------------------------------------
+  // Any valid CSS color works (#hex, rgb(), etc). These become CSS custom
+  // properties, so you can also override them per-element in style.css if
+  // you ever want to get fancier than a flat palette.
+  theme: {
+    bg: "#000000",
+    text: "#d8d8d8", // body text
+    dim: "#888888", // secondary/quiet text
+    heading: "#ffffff", // labels, prompt, headings
+    link: "#9c68e0", // matches the logo palette by default
+    linkHover: "#ffffff",
+  },
+
+  // ---- neofetch-style info block ---------------------------------------
   neofetch: {
     os: "Fedora Linux 44 (Workstation Edition)",
-    kernel: "Linux 7.1.12-200.fc44.x86_64",
-    shell: "bash 5.2.32",
-    editor: "nvim",
-    // uptime is NOT typed here — it's computed live from page-load time,
-    // see terminal.js -> formatUptime()
+    watching: "Black Mirror",
+    playing: "Celeste",
+    listening: "Riverside",
+    bio: "Rustacean, open-source enthusiast, and progressive rock lover." ,
 
+    // Add `url` to make a social a real link. Omit `url` (or set it to
+    // null) to show it as plain text — useful for things like Discord
+    // usernames that don't have a canonical profile URL.
     socials: [
-      { label: "Telegram", value: "@yesdisown" },
-      { label: "Discord",  value: "@yesdisown" },
-      { label: "Matrix",   value: "@yesdisown:matrix.org" },
-      { label: "Mastodon", value: "@yesdisown@101010.pl" },
-      { label: "GitHub",   value: "@yesdisown" },
+      { label: "Telegram", value: "@yesdisown", url: "https://t.me/yesdisown" },
+      { label: "Discord", value: "@yesdisown", url: null },
+      { label: "Matrix", value: "@yesdisown:matrix.org", url: "https://matrix.to/#/@yesdisown:matrix.org" },
+      { label: "Mastodon", value: "@yd@101010.pl", url: "https://101010.pl/@yd" },
+      { label: "GitHub", value: "@yesdisown", url: "https://github.com/yesdisown" },
     ],
   },
 
-  // ---- projects -----------------------------------------------------
-  // To add a project: add ONE object here. It automatically shows up in
-  // `ls ~/projects`, becomes `cat`-able, redirects to the repo, AND bumps
-  // the "Projects:" counter in neofetch. Nothing else to touch.
+  // ---- projects ---------------------------------------------------------
+  // To add a project: add ONE object here. It shows up on the home page
+  // (up to `previewCount`) and always shows up on the "all projects" page.
+  // The "Projects: N (github)" count in neofetch and the "see all" link
+  // both update themselves automatically — nothing else to touch.
+  previewCount: 3,
   projects: [
-    { name: "flaszka", repo: "https://github.com/yesdisown/flaszka" },
-  ],
-
-  // ---- fortune quotes (edit/add freely, one per line) ----------------
-  fortunes: [
-    "the compiler is never wrong. you are.",
-    "there are only two hard problems in computer science:\ncache invalidation, naming things, and off-by-one errors.",
-    "a backend dev's favorite HTTP status is 204: no content,\nno bugs, no comments needed.",
-    "I don't always test my code, but when I do, I do it in production.",
-    "not written in Rust. deal with it.",
-    "yes & disown: the only two commands you need to know.",
-    "everything is a file. even your bad decisions.",
-    "\"it works on my machine\" - every backend dev, ever.",
-    "real programmers count from zero. some also stop caring around then.",
-    "frajer",
+    {
+      name: "flaszka",
+      desc: "A simple CLI flashcard app.",
+      repo: "https://github.com/yesdisown/flaszka",
+    },
   ],
 };
 
 /* ============================================================================
  *  ASCII_LOGO — colorized pixel-art rendering of the pfp, quantized down to
  *  a small palette and a 25x24 grid. Each character in a row maps to a
- *  color via PALETTE below (space = transparent/background).
+ *  color via `palette` below (space = transparent/background).
  *
- *  Regenerating this if you change your pfp is a bit of manual work — ping
- *  whoever/whatever helped you build this site the first time, or write a
- *  small script that: downsamples the image to its native pixel grid,
- *  snaps each cell to a small palette, and encodes rows as strings.
+ *  Changing your pfp means regenerating this by hand isn't realistic —
+ *  come back with the new image and ask for a fresh ASCII_LOGO block.
  * ==========================================================================*/
 const ASCII_LOGO = {
   palette: {
