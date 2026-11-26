@@ -1,0 +1,76 @@
+[site]
+handle      = "yesdisown"
+domain      = "disown.dev"
+tagline     = "Competitive programmer, open-source enthusiast, and progressive rock enjoyer."
+intro       = "Hi, I'm"
+preview_limit = 6
+
+
+[[about]]
+label = "OS"
+value = "Arch Linux"
+
+[[about]]
+label = "Watching"
+value = "Black Mirror"
+
+[[about]]
+label = "Playing"
+value = "Celeste"
+
+[[about]]
+label = "Listening"
+value = "Riverside && Porcupine Tree"
+
+[[socials]]
+label = "Codeforces"
+text  = "@yesdisown"
+url   = "https://codeforces.com/profile/yesdisown"
+
+[[socials]]
+label = "Telegram"
+text  = "@yesdisown"
+url   = "https://t.me/yesdisown"
+
+[[socials]]
+label = "Discord"
+text  = "@yesdisown"
+url   = "https://discord.com/users/1538193888739721257"
+index = false
+
+[[socials]]
+label = "Matrix"
+text  = "@yesdisown:matrix.org"
+url   = "https://matrix.to/#/@yesdisown:matrix.org"
+
+[[socials]]
+label = "Mastodon"
+text  = "@yd@101010.pl"
+url   = "https://101010.pl/@yd"
+
+[[socials]]
+label = "GitHub"
+text  = "@yesdisown"
+url   = "https://github.com/yesdisown"
+
+[[socials]]
+label = "Twitter"
+text  = "@yesdisown"
+url   = "https://x.com/yesdisown"
+
+[[projects]]
+name  = "e-ng"
+wip   = false
+desc  = "A C++ ragebaiting tool."
+links = [
+  { label = "GitHub", url = "https://github.com/yesdisown/e-ng" },
+  { label = "Crates.io", url = "https://crates.io/crates/e-ng" },
+]
+
+[[projects]]
+name  = "flowforces"
+desc  = "Codeforces practice flow & problem recommendation engine."
+links = [
+  { label = "GitHub", url = "https://github.com/yesdisown/flowforces" },
+  { label = "Release", url = "https://oooz.edu.pl/flowforces" },
+]

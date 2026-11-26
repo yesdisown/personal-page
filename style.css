@@ -62,8 +62,7 @@ a:focus-visible {
   color: var(--heading);
 }
 
-.dim,
-.dim-row {
+.dim {
   color: var(--dim);
 }
 
@@ -82,7 +81,7 @@ a:focus-visible {
   flex-shrink: 0;
 }
 
-.nf-logo svg {
+.nf-logo img {
   display: block;
   width: min(220px, 45vw);
   height: auto;
@@ -94,6 +93,9 @@ a:focus-visible {
 
 .nf-userhost {
   color: var(--heading);
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0;
 }
 
 .swatch {
@@ -115,6 +117,7 @@ a:focus-visible {
 }
 
 /* ---------------- lists (links / projects) ---------------- */
+/* proj rows v2 (variant A) */
 .link-list,
 .project-list {
   list-style: none;
@@ -122,40 +125,110 @@ a:focus-visible {
   padding: 0;
 }
 
-.link-list li a,
-.link-list li .dim-row,
-.project-list li a {
+/* social links */
+.link-list li a {
   display: block;
   padding: 8px 6px;
   margin: 0 -6px;
   text-decoration: none;
   border-radius: 2px;
-}
-
-.link-list li a,
-.project-list li a {
   color: var(--text);
-  transition: background 0.15s ease, transform 0.1s ease;
-}
-
-.link-list li .dim-row {
   transition: background 0.15s ease;
 }
-
 .link-list li a:hover,
-.link-list li a:focus-visible,
-.project-list li a:hover,
-.project-list li a:focus-visible {
-  background: rgba(156, 104, 224, 0.12);
-  transform: translateX(4px);
-}
-
-.link-list li .dim-row:hover {
+.link-list li a:focus-visible {
   background: rgba(156, 104, 224, 0.12);
 }
 
-.proj-name {
+/* project row: plain <div>, direct <a> (1 link), or expandable <summary> (2+ links).
+   Every row has a 2ch "marker column" so project names line up. */
+.proj-row {
+  display: block;
+  padding: 8px 6px;
+  margin: 0 -6px;
+  border-radius: 2px;
+  color: var(--text);
+  text-decoration: none;
+}
+.proj-row::before {
+  content: "";
+  display: inline-block;
+  width: 2ch;
+  color: var(--dim);
+}
+
+/* 1 link: whole row is a link, arrow at the end */
+a.proj-row::after {
+  content: " \2192"; /* → */
+  color: var(--dim);
+}
+
+/* 2+ links: <summary> toggles the buttons below */
+summary.proj-row {
+  cursor: pointer;
+  list-style: none;
+}
+summary.proj-row::-webkit-details-marker {
+  display: none;
+}
+summary.proj-row::before {
+  content: "\25ba"; /* ► */
+}
+details[open] > summary.proj-row::before {
+  content: "\25bc"; /* ▼ */
+}
+
+/* hover/focus: no movement, so the click target stays under the cursor */
+a.proj-row:hover,
+a.proj-row:focus-visible,
+summary.proj-row:hover,
+summary.proj-row:focus-visible {
+  background: rgba(156, 104, 224, 0.12);
+}
+a.proj-row:hover::after,
+summary.proj-row:hover::before {
+  color: var(--link-hover);
+}
+.proj-row:focus-visible {
+  outline: 1px solid var(--link);
+  outline-offset: 0;
+}
+
+/* expanded buttons:  └─ [ GitHub ]  [ Demo ] */
+.proj-actions {
+  display: flex;
+  align-items: baseline;
+  padding: 0 0 8px;
+}
+.tree {
+  flex: none;
+  width: 2ch;
+  color: var(--dim);
+}
+.proj-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+}
+.btn {
+  display: inline-block;
+  padding: 6px 0;
   color: var(--link);
+  text-decoration: none;
+}
+.btn::before {
+  content: "[ ";
+}
+.btn::after {
+  content: " ]";
+}
+.btn:hover,
+.btn:focus-visible {
+  color: var(--link-hover);
+}
+.btn:focus-visible {
+  outline: 1px solid var(--link);
+  outline-offset: 2px;
 }
 
 .proj-desc {

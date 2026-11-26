@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@{{handle}}</title>
+  <meta name="description" content="{{domain}} — {{handle}}" />
+
+  <meta property="og:title" content="@{{handle}}" />
+  <meta property="og:description" content="{{tagline}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://{{domain}}/" />
+  <meta property="og:image" content="https://{{domain}}/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="@{{handle}}" />
+  <meta name="twitter:description" content="{{tagline}}" />
+  <meta name="twitter:image" content="https://{{domain}}/og.png" />
+
+  <link rel="icon" href="./favicon.ico" sizes="any" />
+  <link rel="icon" href="./favicon.png" type="image/png" />
+
+  <link rel="stylesheet" href="./style.css" />
+  <script type="application/ld+json">
+{{jsonld}}
+  </script>
+</head>
+<body>
+  <!-- GENERATED FILE: edytuj site.toml / template.html i odpal `python3 build.py` -->
+  <main id="screen">
+{{all_projects_view}}
+    <section id="home">
+      <div id="neofetch">
+        <div class="nf-logo"><img src="./logo.svg" alt="" width="220" height="211" /></div>
+        <div class="nf-info">
+          <h1 class="nf-userhost">{{intro}} <span class="purple">@{{handle}}</span>!</h1>
+          <div>{{tagline}}</div>
+          <div class="dim">------------------</div>
+{{about_lines}}
+          <div class="swatch" aria-hidden="true">{{swatch}}</div>
+        </div>
+      </div>
+
+      <div id="home-content">
+        <section class="home-section">
+          <h2 class="section-heading">$ links</h2>
+          <ul class="link-list">
+{{socials}}
+          </ul>
+        </section>
+        <section class="home-section">
+          <h2 class="section-heading">$ projects</h2>
+          <ul class="project-list">
+{{projects_preview}}
+          </ul>{{see_all_link}}
+        </section>
+      </div>
+    </section>
+
+    <footer>
+      <a class="credit" href="https://int10h.org/oldschool-pc-fonts/" target="_blank" rel="noopener">Font: Px437 IBM VGA 8x16 by VileR, CC BY-SA 4.0</a>
+    </footer>
+  </main>
+</body>
+</html>
